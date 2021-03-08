@@ -59,4 +59,3 @@ def input(id=0,name=" "):
         
     video.release()
     cv2.destroyAllWindows()
-input(5,'jk')    
