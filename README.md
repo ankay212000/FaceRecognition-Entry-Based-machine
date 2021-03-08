@@ -20,9 +20,9 @@ pip install -r requirements.txt
 
 Modules which will be installed includes:
 ```
-    face_recognition
-    opencv-python
-    pandas
+face_recognition
+opencv-python
+pandas
 ```
 
 
