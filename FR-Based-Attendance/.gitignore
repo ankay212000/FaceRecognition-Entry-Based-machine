@@ -1,5 +1,8 @@
 # Git Ignore
 
+# Python Cache
+__pycache__/
+
 # User Data
 Images
 *.csv
