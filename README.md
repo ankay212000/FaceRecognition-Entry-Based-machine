@@ -12,12 +12,19 @@ Use GUI_color.py or GUI_background.py or GUI.py to run.
 
 What things you need to run the software.
 
+To install modules run:
+
 ```
-Modules:
-    face_recognition
-    opencv-python
-    pandas
+pip install -r requirements.txt
 ```
+
+Modules which will be installed includes:
+```
+face_recognition
+opencv-python
+pandas
+```
+
 
 ### Instructions
 
