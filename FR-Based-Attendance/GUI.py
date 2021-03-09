@@ -17,9 +17,10 @@ def create_window():
     global id,name
     root=tk.Toplevel(window)
     root.title("Registration")
-    background_boy(root)
+    root.configure(background="#832cd6")
     #root.configure(background='white')
     root.state("zoomed")
+    root.geometry("1366x768")
     background_label = tk.Label(
         root, background="#ededed", width=150, height=34)
     background_label.place(x=150, y=110)
@@ -76,6 +77,7 @@ def create_window2():
     root1.title("Attendance")
     root1.state("zoomed")
     root1.configure(background="#832cd6")
+    root1.geometry("1366x768")
     #root1.configure(background='white')
     background_label = tk.Label(root1, background="#ededed", width=150, height=34)
     background_label.place(x=150, y=110)
@@ -98,7 +100,8 @@ def create_window2():
 def password():
     root2=tk.Toplevel(window)
     root2.title("Login")
-    background_boy(root2)
+    root2.configure(background="#832cd6")
+    root2.geometry("1366x768")
     root2.state("zoomed")
     #root2.configure(background="cyan2")
     background_label = tk.Label(
@@ -129,7 +132,8 @@ def delete_ID():
     
     root4=tk.Toplevel(window)
     root4.title("Delete")
-    background_boy(root4)
+    root4.configure(background="#832cd6")
+    root4.geometry("1366x768")
     #root4.configure(background="cyan2")
     root4.state("zoomed")
     background_label = tk.Label(
@@ -193,8 +197,8 @@ def admin_login():
     
     root5=tk.Toplevel(window)
     root5.title("Admin")
-
-    background_boy(root5)  
+    root5.configure(background="#832cd6")
+    root5.geometry("1366x768")
     #root5.configure(background="#14ce4f")
     root5.state("zoomed")
 
@@ -219,17 +223,14 @@ def admin_login():
 
 window=tk.Tk()
 window.title("Home")
-#832cd6
+window.geometry("1366x768")
+
 window.configure(background="#832cd6")
 window.state("zoomed")
 background_label = tk.Label(window, background="#474747", width=165, height=34)
 background_label.place(x=100, y=120)
-image = Image.open("./Backgrounds/graddpurple.jpg")
-background_image = ImageTk.PhotoImage(image)
 
-def background_boy(nameofwindow):
-        background_label = tk.Label(nameofwindow, image=background_image)
-        background_label.place(x=0, y=0, relwidth=1, relheight=1)
+
 
 message = tk.Label(window, text="Face-Recognition-Based-Attendance-Management-System", bg="#832cd6", fg="white", width=50,
                    height=1, font=("Comic Sans", 25, 'bold'))
