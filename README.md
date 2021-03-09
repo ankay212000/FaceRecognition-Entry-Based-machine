@@ -6,7 +6,7 @@ A program to take attendance of a person using face recognition.
 
 ## Getting Started
 
-Use GUI_color.py or GUI_background.py or GUI.py to run.
+Use GUI.py to run.
 
 ### Prerequisites
 

@@ -23,7 +23,8 @@ def att(id,name):
         df=df.drop("PASSWORD",axis=1)
         #Adding days
         for i in range(1, 32):
-                df["Day  "+str(i)] = ""
+            st = str(i) if i>10 else "0"+str(i)
+            df["Day  "+st] = ""
         df.to_csv("Attendance.csv")
         
 
