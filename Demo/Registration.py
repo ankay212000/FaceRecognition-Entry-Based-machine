@@ -6,7 +6,7 @@ import pandas as pd
 import RegImage 
 
 name=input("Enter your name: ")
-id=input("Enter your roll_no.: ")
+id=input("Enter unique ID no.: ")
 name=name[0].upper()+name[1:].lower()
 Name=[]
 exist=path.isfile('./dataset.dat')
