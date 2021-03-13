@@ -3,7 +3,7 @@ import cv2
 import numpy as np 
 import pickle
 import time
-import att_data 
+# import att_data 
 import os
 notif=""
 def attend():
@@ -56,7 +56,8 @@ def attend():
                     else:
                         cv2.rectangle(img,(left+190,bottom+160),(left+550,bottom+130),(0,0,255),cv2.FILLED)
                         cv2.putText(img,"Attendance Taken",(left+240,bottom+150),font,1,(255,255,255),2)
-                        att_data.present(id)
+                        # att_data.present(id)
+                        # Upload to cloud here
                     f=f+1
             cv2.imshow("Capture",img)
             if(f>42 and name!="Unknown"):

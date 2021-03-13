@@ -4,7 +4,7 @@ from os import path
 import pickle
 import selfie
 import reg_data
-import att_sortdata
+# import att_sortdata
 notif=""
 #Taking input...
 def registration(id,name,password):
@@ -100,5 +100,5 @@ def registration(id,name,password):
             f = False
     if(f):           
         reg_data.do(id,password)
-        att_sortdata.att(id,name)
+        # att_sortdata.att(id,name)
     

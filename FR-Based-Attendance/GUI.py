@@ -2,16 +2,16 @@ import tkinter as tk
 import Registration as rg
 import Taking_Attendance as ta
 import Deleting as dt
-import attendancepost as ap
-import transfer as tf
+# import attendancepost as ap
+# import transfer as tf
 id=0
 name=""
 
 from PIL import Image,ImageTk
-def upload1():
-    ap.post()
-def upload2():
-    tf.req()
+# def upload1():
+#     ap.post()
+# def upload2():
+#     tf.req()
     
 def create_window():
     global id,name
@@ -215,12 +215,12 @@ def admin_login():
     back_button = tk.Button(root5, text="Back", command=root5.destroy, fg="white", bg="#565656", width=50, height=2,
                             activebackground="firebrick2", font=('Sans', 17, ' bold '))
     back_button.place(x=320, y=540)
-    upload_button1 = tk.Button(root5, text="Upload Attendance", command=upload1, fg="white", bg="#565656", width=25, height=2,
-                            activebackground="firebrick2", font=('Sans', 17, ' bold '))
-    upload_button1.place(x=320, y=400)
-    upload_button2 = tk.Button(root5, text="Upload Student details", command=upload2, fg="white", bg="#565656", width=23, height=2,
-                            activebackground="firebrick2", font=('Sans', 17, ' bold '))
-    upload_button2.place(x=700, y=400)
+    # upload_button1 = tk.Button(root5, text="Upload Attendance", command=upload1, fg="white", bg="#565656", width=25, height=2,
+    #                         activebackground="firebrick2", font=('Sans', 17, ' bold '))
+    # upload_button1.place(x=320, y=400)
+    # upload_button2 = tk.Button(root5, text="Upload Student details", command=upload2, fg="white", bg="#565656", width=23, height=2,
+    #                         activebackground="firebrick2", font=('Sans', 17, ' bold '))
+    # upload_button2.place(x=700, y=400)
 
 window=tk.Tk()
 window.title("Home")
