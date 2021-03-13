@@ -23,7 +23,7 @@ def registration(id,name,password):
         return    
 #Checking if file already exists...
     exists = path.isfile('./data.dat')
-
+    f=  True
 #If exists then append...
     if(exists):
     #Read data from the data.dat file and check if id already exists.
@@ -41,28 +41,33 @@ def registration(id,name,password):
         selfie.input(id,name)
 
     #Code for creating a face_encodings,id,name array of current user.
-        img1=fr.load_image_file(f"./Images/{id} {name}1.jpg")
-        en1=fr.face_encodings(img1)[0]
+        try:
+            img1=fr.load_image_file(f"./Images/{id} {name}1.jpg")
+            en1=fr.face_encodings(img1)[0]
 
-        img2=fr.load_image_file(f"./Images/{id} {name}2.jpg")
-        en2=fr.face_encodings(img2)[0]
+            img2=fr.load_image_file(f"./Images/{id} {name}2.jpg")
+            en2=fr.face_encodings(img2)[0]
 
-        Ids=np.array([id,id])
-        Names=np.array([name,name])
-        Ens=np.array([en1,en2])
+
+            Ids=np.array([id,id])
+            Names=np.array([name,name])
+            Ens=np.array([en1,en2])
 
     #Appending manuallly..
     
     #Add more data,i.e. the data of current user.
-        Ens=np.append(r_ens,Ens,axis=0)
-        Ids=np.append(r_ids,Ids)
-        Names=np.append(r_names,Names)
+            Ens=np.append(r_ens,Ens,axis=0)
+            Ids=np.append(r_ids,Ids)
+            Names=np.append(r_names,Names)
     
     #Overwriting the data file with new data.
-        fileobj1=open("data.dat",'wb')
-        pickle.dump((Ens,Ids,Names),fileobj1)
-        notif=f"[Id= {id} , Name= {name}] registered."
-        fileobj1.close()
+            fileobj1=open("data.dat",'wb')
+            pickle.dump((Ens,Ids,Names),fileobj1)
+            notif=f"[Id= {id} , Name= {name}] registered."
+            fileobj1.close()
+        except:
+            notif="Please Retry"
+            f = False 
 
 #If not exists then create..
     else:
@@ -74,21 +79,26 @@ def registration(id,name,password):
     
 
     #Code for creating a face_encodings,id,name array of current user.
-        img1=fr.load_image_file(f"./Images/{id} {name}1.jpg")
-        en1=fr.face_encodings(img1)[0]
+        try:
+            img1=fr.load_image_file(f"./Images/{id} {name}1.jpg")
+            en1=fr.face_encodings(img1)[0]
 
-        img2=fr.load_image_file(f"./Images/{id} {name}2.jpg")
-        en2=fr.face_encodings(img2)[0]
+            img2=fr.load_image_file(f"./Images/{id} {name}2.jpg")
+            en2=fr.face_encodings(img2)[0]
 
-        Ids=np.array([id,id])
-        Names=np.array([name,name])
-        Ens=np.array([en1,en2])
+            Ids=np.array([id,id])
+            Names=np.array([name,name])
+            Ens=np.array([en1,en2])
 
     #Create first data file
-        fileobj=open("data.dat",'wb')
-        pickle.dump((Ens,Ids,Names),fileobj)
-        notif=f"[Id= {id} , Name= {name}] registered."
-        fileobj.close()
-    reg_data.do(id,password)
-    att_sortdata.att(id,name)
+            fileobj=open("data.dat",'wb')
+            pickle.dump((Ens,Ids,Names),fileobj)
+            notif=f"[Id= {id} , Name= {name}] registered."
+            fileobj.close()
+        except:
+            notif="Please Retry"
+            f = False
+    if(f):           
+        reg_data.do(id,password)
+        att_sortdata.att(id,name)
     

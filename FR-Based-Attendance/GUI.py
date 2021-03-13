@@ -54,6 +54,7 @@ def create_window():
     
 
     def register():
+        message = ""
         id=txt.get()
         name=txt2.get()
         pss=txt4.get()
