@@ -1,24 +1,18 @@
 import tkinter as tk
 import Registration as rg
-import Taking_Attendance as ta
+import Taking_Entry as ta
 import Deleting as dt
-# import attendancepost as ap
-# import transfer as tf
+
 id=0
 name=""
 
 from PIL import Image,ImageTk
-# def upload1():
-#     ap.post()
-# def upload2():
-#     tf.req()
     
 def create_window():
     global id,name
     root=tk.Toplevel(window)
     root.title("Registration")
     root.configure(background="#832cd6")
-    #root.configure(background='white')
     root.state("zoomed")
     root.geometry("1366x768")
     background_label = tk.Label(
@@ -39,15 +33,7 @@ def create_window():
     lbl2.place(x=400, y=220)
     txt2 = tk.Entry(root, width=20, bg="white", fg="black", font=('Times New Roman', 17, ' bold '))
     txt2.place(x=700, y=230)
-    lbl4 = tk.Label(root, text="Enter Password", width=20, fg="black",
-                    bg="#ededed", height=2, font=('Sans', 15, ' bold '))
-    lbl4.place(x=400, y=280)
-    lbl5 = tk.Label(root, text="(to view attendance)", width=20, fg="black",
-                    bg="#ededed", height=1, font=('Sans', 8, ' bold '))
-    lbl5.place(x=450, y=315)
-    txt4 = tk.Entry(root, width=20, bg="white", fg="black",
-                    font=('Times New Roman', 17, ' bold '))
-    txt4.place(x=700, y=290)
+    
     lbl3 = tk.Label(root, text="Notification : ", width=20, fg="black", bg="#ededed", height=2,
                 font=('Sans', 15, ' bold'))
     lbl3.place(x=410, y=350)
@@ -57,8 +43,8 @@ def create_window():
         message = ""
         id=txt.get()
         name=txt2.get()
-        pss=txt4.get()
-        rg.registration(id,name,pss)
+        
+        rg.registration(id,name)
         message = tk.Label(root, text=rg.notif, bg="#ededed", fg="blue", width=30, height=2, activebackground="blue",
                    font=('times', 15, ' bold '))
         if(("already" in rg.notif) or "Please" in rg.notif):
@@ -75,14 +61,14 @@ def create_window():
 
 def create_window2():
     root1=tk.Toplevel(window)
-    root1.title("Attendance")
+    root1.title("Entry")
     root1.state("zoomed")
     root1.configure(background="#832cd6")
     root1.geometry("1366x768")
-    #root1.configure(background='white')
+    
     background_label = tk.Label(root1, background="#ededed", width=150, height=34)
     background_label.place(x=150, y=110)
-    message = tk.Label(root1, text="Attendance-desk",  bg="#832cd6", fg="white", width=43,
+    message = tk.Label(root1, text="Entry-desk",  bg="#832cd6", fg="white", width=43,
                        height=1, font=('Sans', 30, 'bold'))
     message.place(x=150, y=30)
     def call():
@@ -90,7 +76,7 @@ def create_window2():
         message = tk.Label(root1, text=ta.notif, bg="#ededed", fg="blue", width=30, height=2, activebackground="blue",
                    font=('times', 15, ' bold '))
         message.place(x=470,y=150)           
-    trackImg = tk.Button(root1, text="Take Attendance", command=call, fg="white", bg="#3f4884", width=50, height=2,
+    trackImg = tk.Button(root1, text="Take Entry", command=call, fg="white", bg="#3f4884", width=50, height=2,
                          activebackground="#00c146", font=('Sans', 18, ' bold '))
     trackImg.place(x=300, y=400)
     back_button=tk.Button(root1,text="Back",command=root1.destroy,fg="white",bg="#3f4884",width=50,height=2,
@@ -104,7 +90,7 @@ def password():
     root2.configure(background="#832cd6")
     root2.geometry("1366x768")
     root2.state("zoomed")
-    #root2.configure(background="cyan2")
+    
     background_label = tk.Label(
         root2, background="#ededed", width=165, height=33)
     background_label.place(x=100, y=110)
@@ -135,7 +121,7 @@ def delete_ID():
     root4.title("Delete")
     root4.configure(background="#832cd6")
     root4.geometry("1366x768")
-    #root4.configure(background="cyan2")
+    
     root4.state("zoomed")
     background_label = tk.Label(
         root4, background="#ededed", width=150, height=34)
@@ -200,7 +186,6 @@ def admin_login():
     root5.title("Admin")
     root5.configure(background="#832cd6")
     root5.geometry("1366x768")
-    #root5.configure(background="#14ce4f")
     root5.state("zoomed")
 
     background_label = tk.Label(
@@ -215,12 +200,6 @@ def admin_login():
     back_button = tk.Button(root5, text="Back", command=root5.destroy, fg="white", bg="#565656", width=50, height=2,
                             activebackground="firebrick2", font=('Sans', 17, ' bold '))
     back_button.place(x=320, y=540)
-    # upload_button1 = tk.Button(root5, text="Upload Attendance", command=upload1, fg="white", bg="#565656", width=25, height=2,
-    #                         activebackground="firebrick2", font=('Sans', 17, ' bold '))
-    # upload_button1.place(x=320, y=400)
-    # upload_button2 = tk.Button(root5, text="Upload Student details", command=upload2, fg="white", bg="#565656", width=23, height=2,
-    #                         activebackground="firebrick2", font=('Sans', 17, ' bold '))
-    # upload_button2.place(x=700, y=400)
 
 window=tk.Tk()
 window.title("Home")
@@ -233,13 +212,13 @@ background_label.place(x=100, y=120)
 
 
 
-message = tk.Label(window, text="Face-Recognition-Based-Attendance-Management-System", bg="#832cd6", fg="white", width=50,
+message = tk.Label(window, text="Face-Recognition-Based-Entry-Management-System", bg="#832cd6", fg="white", width=50,
                    height=1, font=("Comic Sans", 25, 'bold'))
 message.place(x=170, y=40)
 trainImg = tk.Button(window, text="Admin Login", command=password, fg="white", bg="#505050", width=50, height=3,
                      activebackground="#00c146", font=('Sans', 17, ' bold '))
 trainImg.place(x=320, y=180)                   
-trackImg = tk.Button(window, text="Attendance", command=create_window2, fg="white", bg="#505050", width=50, height=3,
+trackImg = tk.Button(window, text="Entry", command=create_window2, fg="white", bg="#505050", width=50, height=3,
                      activebackground="#00c146", font=('Sans', 17, ' bold '))
 trackImg.place(x=320, y=320)
 Quit_button=tk.Button(window,text="Quit",command=window.destroy,fg="white",bg="#505050", width=50, height=3,

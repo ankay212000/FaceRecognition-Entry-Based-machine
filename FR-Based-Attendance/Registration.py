@@ -4,17 +4,13 @@ from os import path
 import pickle
 import selfie
 import reg_data
-# import att_sortdata
 notif=""
 #Taking input...
-def registration(id,name,password):
+def registration(id,name):
     
     global notif
     if(name == ""):
         notif = "Name is required."
-        return
-    if(password==""):
-        notif = "Password is required."
         return
     if(id.isdigit()):
         id=int(id)
@@ -99,6 +95,5 @@ def registration(id,name,password):
             notif="Please Retry"
             f = False
     if(f):           
-        reg_data.do(id,password)
-        # att_sortdata.att(id,name)
+        reg_data.do(id)
     
