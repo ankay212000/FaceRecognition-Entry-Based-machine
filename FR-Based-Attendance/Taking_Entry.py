@@ -25,12 +25,15 @@ def attend():
         file.close()
         f=0
         video = cv2.VideoCapture(0)
+        width,height = int(video.get(3)), int(video.get(4))
+        detected = False
         while(1):
             #Load test image
             check,img=video.read()
             img=cv2.flip(img,1)
-            cv2.rectangle(img,(190,120,250,250),(50,150,40),8)
-            crop=img[120:370,190:440]
+            box_x,box_y,box_l =int((width - 0.5*height) // 2),int(0.25*height),int(0.5*height)
+            cv2.rectangle(img,(box_x,box_y,box_l,box_l),(50,150,40),8)
+            crop=img[box_y:box_y+box_l,box_x:box_x+box_l]
             #test=cv2.resize(img, (0, 0), fx=0.25, fy=0.25)
             test=cv2.cvtColor(crop,cv2.COLOR_BGR2RGB)
             
@@ -64,14 +67,11 @@ def attend():
                         cv2.rectangle(img,(left+190,bottom+160),(left+450,bottom+130),(0,0,255),cv2.FILLED)
                         cv2.putText(img,"Entry Taken",(left+240,bottom+155),font,1,(255,255,255),2)
                         # Upload to cloud here
-                        Image_Path1=f"Images/{id} {name}1.jpg"
-                        print(Image_Path1)
-                        Image=get_url(Image_Path1)
-                        Time=get_data(id,"DateTime")
-                        Time.append(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
-                        tmp={'User_ID':str(id),'Time':Time,'Name':str(name),"Image":str(Image)}
-                        #print(tmp)
-                        Upload(tmp,'DateTime')
+                        # Image_Path1=f"Images/{id} {name}1.jpg"
+                        # print(Image_Path1)
+                        # Image=get_url(Image_Path1)
+
+                        detected = True
                         notif="Entry Done Successfully"
 
                     f=f+1
@@ -91,3 +91,9 @@ def attend():
                 break
     video.release()
     cv2.destroyAllWindows()
+    if(detected):
+        Time=get_data(id,"DateTime")
+        Time.append(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+        tmp={'User_ID':str(id),'Time':Time,'Name':str(name)}
+        #print(tmp)
+        Upload(tmp,'DateTime')
