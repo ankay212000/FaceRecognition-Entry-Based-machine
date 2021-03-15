@@ -4,6 +4,11 @@ from os import path
 import pickle
 import selfie
 import reg_data
+from datetime import datetime
+from Upload_to_storage import get_url
+from Upload_to_firestore import Upload
+from Export_Data_from_firebase import get_data
+
 notif=""
 #Taking input...
 def registration(id,name):
@@ -59,6 +64,13 @@ def registration(id,name):
     #Overwriting the data file with new data.
             fileobj1=open("data.dat",'wb')
             pickle.dump((Ens,Ids,Names),fileobj1)
+            Image_Path1=f"Images/{id} {name}1.jpg"
+            Image=get_url(Image_Path1)
+            print(Image)    
+            Time=[(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))]
+            tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Image':Image,'Date':datetime.today()}
+            #print(tmp)
+            Upload(tmp,'User_Data')
             notif=f"[Id= {id} , Name= {name}] registered."
             fileobj1.close()
         except:
@@ -75,7 +87,7 @@ def registration(id,name):
     
 
     #Code for creating a face_encodings,id,name array of current user.
-        try:
+        if(1):
             img1=fr.load_image_file(f"./Images/{id} {name}1.jpg")
             en1=fr.face_encodings(img1)[0]
 
@@ -89,9 +101,15 @@ def registration(id,name):
     #Create first data file
             fileobj=open("data.dat",'wb')
             pickle.dump((Ens,Ids,Names),fileobj)
+            Image_Path1=f"Images/{id} {name}1.jpg"
+            Image=get_url(Image_Path1)
+            Time=[(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))]
+            tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Image':Image,'Date':datetime.today()}
+            #print(tmp)
+            Upload(tmp,'User_Data')
             notif=f"[Id= {id} , Name= {name}] registered."
             fileobj.close()
-        except:
+        else:
             notif="Please Retry"
             f = False
     if(f):           

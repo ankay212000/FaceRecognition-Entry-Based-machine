@@ -92,8 +92,9 @@ def attend():
     video.release()
     cv2.destroyAllWindows()
     if(detected):
-        Time=get_data(id,"DateTime")
+        Time,Date,image=get_data(str(id),"User_Data")
+        #print(Time,Date,image)
         Time.append(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
-        tmp={'User_ID':str(id),'Time':Time,'Name':str(name)}
+        tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Date':Date,'Image':image}
         #print(tmp)
-        Upload(tmp,'DateTime')
+        Upload(tmp,'User_Data')

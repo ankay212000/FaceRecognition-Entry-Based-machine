@@ -165,7 +165,7 @@ def delete_ID():
         message.place(x=600, y=250)
 
         
-    lbl = tk.Label(root4, text="Enter ID",  width=20, height=2,
+    '''lbl = tk.Label(root4, text="Enter ID",  width=20, height=2,
                    fg="black", bg="#ededed", font=('Sans', 15, ' bold '))
     lbl.place(x=400, y=150)
     txt = tk.Entry(root4, width=20,  bg="white",
@@ -176,10 +176,10 @@ def delete_ID():
     lbl3.place(x=280, y=250)
     submit_button = tk.Button(root4, text="Delete", command=delet, fg="black", bg="#c6c6c6", width=40, height=2,
                               activebackground="firebrick2", font=('Sans', 15, 'bold'))
-    submit_button.place(x=440, y=450)
+    submit_button.place(x=440, y=450)'''
     back_button = tk.Button(root4, text="Back", command=root4.destroy, fg="black", bg="#c6c6c6", width=40, height=2,
                             activebackground="firebrick2", font=('Sans', 15, 'bold'))
-    back_button.place(x=440, y=540)                       
+    back_button.place(x=440, y=540)                     
    
 def admin_login():
     
@@ -195,9 +195,9 @@ def admin_login():
     register_button = tk.Button(root5, text="Register", command=create_window, fg="white", bg="#565656", width=50, height=2,
                                 activebackground="#00c146", font=('Sans', 17, ' bold '))
     register_button.place(x=320, y=120)
-    delete = tk.Button(root5, text="Delete By ID", command=delete_ID, fg="white", bg="#565656", width=50, height=2,
+    '''delete = tk.Button(root5, text="Delete By ID", command=delete_ID, fg="white", bg="#565656", width=50, height=2,
                        activebackground="#00c146", font=('Sans', 17, ' bold '))
-    delete.place(x=320, y=260)
+    delete.place(x=320, y=260)'''
     back_button = tk.Button(root5, text="Back", command=root5.destroy, fg="white", bg="#565656", width=50, height=2,
                             activebackground="firebrick2", font=('Sans', 17, ' bold '))
     back_button.place(x=320, y=540)
