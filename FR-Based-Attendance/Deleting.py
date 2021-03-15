@@ -58,10 +58,3 @@ def delete(id):
     else:
         notif="ID not in database."
         return
-
-
-
-
-
-
-

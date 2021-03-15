@@ -2,7 +2,8 @@ import tkinter as tk
 import Registration as rg
 import Taking_Entry as ta
 import Deleting as dt
-
+from Initialise_firebase import initialise
+initialise()
 id=0
 name=""
 

@@ -31,4 +31,3 @@ def do(id):
     df.set_index("ID", inplace=True)
     df.to_csv("StudentDetails.csv")
     # Upload User Data here
-

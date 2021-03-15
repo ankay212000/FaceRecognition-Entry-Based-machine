@@ -11,11 +11,3 @@ def deld(id):
     #------------------------
     df=df.drop([id],axis=0)
     df.to_csv("StudentDetails.csv")
-    
-    
-    
-
-
-    
-
-

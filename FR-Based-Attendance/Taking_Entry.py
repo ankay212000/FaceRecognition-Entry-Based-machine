@@ -4,6 +4,11 @@ import numpy as np
 import pickle
 import time
 import os
+from datetime import datetime
+from Upload_to_storage import get_url
+from Upload_to_firestore import Upload
+from Export_Data_from_firebase import get_data
+
 notif=""
 def attend():
     global notif
@@ -59,6 +64,16 @@ def attend():
                         cv2.rectangle(img,(left+190,bottom+160),(left+450,bottom+130),(0,0,255),cv2.FILLED)
                         cv2.putText(img,"Entry Taken",(left+240,bottom+155),font,1,(255,255,255),2)
                         # Upload to cloud here
+                        Image_Path1=f"Images/{id} {name}1.jpg"
+                        print(Image_Path1)
+                        Image=get_url(Image_Path1)
+                        Time=get_data(id,"DateTime")
+                        Time.append(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+                        tmp={'User_ID':str(id),'Time':Time,'Name':str(name),"Image":str(Image)}
+                        #print(tmp)
+                        Upload(tmp,'DateTime')
+                        notif="Entry Done Successfully"
+
                     f=f+1
             cv2.imshow("Capture",img)
             if(f>42 and name!="Unknown"):
@@ -75,5 +90,4 @@ def attend():
             if(cv2.getWindowProperty("Capture",0)):
                 break
     video.release()
-    cv2.destroyAllWindows()      
-       
+    cv2.destroyAllWindows()

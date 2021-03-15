@@ -10,4 +10,3 @@ r=load(fileobj)
 print("Password dictionary=>")
 print(r)
 fileobj.close()
-

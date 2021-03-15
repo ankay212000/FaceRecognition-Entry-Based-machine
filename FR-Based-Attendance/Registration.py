@@ -96,4 +96,3 @@ def registration(id,name):
             f = False
     if(f):           
         reg_data.do(id)
-    
