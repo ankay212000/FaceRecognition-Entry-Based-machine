@@ -87,7 +87,7 @@ def registration(id,name):
     
 
     #Code for creating a face_encodings,id,name array of current user.
-        if(1):
+        try:
             img1=fr.load_image_file(f"./Images/{id} {name}1.jpg")
             en1=fr.face_encodings(img1)[0]
 
@@ -109,7 +109,7 @@ def registration(id,name):
             Upload(tmp,'User_Data')
             notif=f"[Id= {id} , Name= {name}] registered."
             fileobj.close()
-        else:
+        except:
             notif="Please Retry"
             f = False
     if(f):           
