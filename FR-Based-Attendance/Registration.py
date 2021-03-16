@@ -4,7 +4,7 @@ from os import path
 import pickle
 import selfie
 import reg_data
-from datetime import datetime
+from datetime import date,datetime
 from Upload_to_storage import get_url
 from Upload_to_firestore import Upload
 from Export_Data_from_firebase import get_data
@@ -66,10 +66,9 @@ def registration(id,name):
             pickle.dump((Ens,Ids,Names),fileobj1)
             Image_Path1=f"Images/{id} {name}1.jpg"
             Image=get_url(Image_Path1)
-            print(Image)    
+            
             Time=[(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))]
-            tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Image':Image,'Date':datetime.today()}
-            #print(tmp)
+            tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Image':Image,'Date':str(date.today().strftime("%m/%d/%y"))}
             Upload(tmp,'User_Data')
             notif=f"[Id= {id} , Name= {name}] registered."
             fileobj1.close()
@@ -104,7 +103,7 @@ def registration(id,name):
             Image_Path1=f"Images/{id} {name}1.jpg"
             Image=get_url(Image_Path1)
             Time=[(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))]
-            tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Image':Image,'Date':datetime.today()}
+            tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Image':Image,'Date':str(date.today().strftime("%m/%d/%y"))}
             #print(tmp)
             Upload(tmp,'User_Data')
             notif=f"[Id= {id} , Name= {name}] registered."
