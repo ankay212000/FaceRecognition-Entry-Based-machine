@@ -1,7 +1,16 @@
 import os,shutil
 
-os.remove("./data.dat")
-os.remove("./StudentDetails.csv")
+def check_delete(path):
+    if(os.path.exists(path)):
+        os.remove(path)
 
-shutil.rmtree("./Images")
-shutil.rmtree("./__pycache__")
+
+def check_delete_dir(path):
+    if(os.path.isdir(path)):
+        shutil.rmtree(path)
+
+check_delete("./data.dat")
+check_delete("./StudentDetails.csv")
+
+check_delete_dir("./Images")
+check_delete_dir("./__pycache__")
