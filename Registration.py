@@ -19,6 +19,9 @@ def registration(id,name,password):
         return
     if(id.isdigit()):
         id=int(id)
+    elif(password==""):
+        notif = "Password is required."
+        return    
     else:
         notif="Invalid ID Please Retry"
         return    
@@ -68,7 +71,7 @@ def registration(id,name,password):
             Image=get_url(Image_Path1)
             
             Time=[(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))]
-            tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Image':Image,'Date':str(date.today().strftime("%m/%d/%y"))}
+            tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Image':Image,'Date':str(date.today().strftime("%m/%d/%y")),'Password':password}
             Upload(tmp,'User_Data')
             notif=f"[Id= {id} , Name= {name}] registered."
             fileobj1.close()
