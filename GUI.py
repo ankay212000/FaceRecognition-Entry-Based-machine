@@ -35,6 +35,16 @@ def create_window():
     lbl2.place(x=400, y=220)
     txt2 = tk.Entry(root, width=20, bg="white", fg="black", font=('Times New Roman', 17, ' bold '))
     txt2.place(x=700, y=230)
+
+    lbl4 = tk.Label(root, text="Choose Password", width=20, fg="black",
+                    bg="#ededed", height=2, font=('Sans', 15, ' bold '))
+    lbl4.place(x=400, y=280)
+    lbl5 = tk.Label(root, text="(to login)", width=20, fg="black",
+                    bg="#ededed", height=1, font=('Sans', 8, ' bold '))
+    lbl5.place(x=450, y=315)
+    txt4 = tk.Entry(root, width=20, bg="white", fg="black",
+                    font=('Times New Roman', 17, ' bold '))
+    txt4.place(x=700, y=290)
     
     lbl3 = tk.Label(root, text="Notification : ", width=20, fg="black", bg="#ededed", height=2,
                 font=('Sans', 15, ' bold'))
@@ -45,8 +55,8 @@ def create_window():
         message = ""
         id=txt.get()
         name=txt2.get()
-        
-        rg.registration(id,name)
+        pss=txt4.get()
+        rg.registration(id,name,pss)
         message = tk.Label(root, text=rg.notif, bg="#ededed", fg="blue", width=30, height=2, activebackground="blue",
                    font=('times', 15, ' bold '))
         if(("already" in rg.notif) or "Please" in rg.notif):

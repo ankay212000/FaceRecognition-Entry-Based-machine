@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np 
 import pickle
 import os
-def do(id):
+def do(id,password):
     #Getting data in random order
     fileobj = open("./data.dat", 'rb')
     tup = pickle.load(fileobj)
@@ -27,7 +27,7 @@ def do(id):
         names=np.append(names,[n])
 
     #Creating data frame and storing in csv
-    df = pd.DataFrame({'ID': ids, 'NAME': names} )
+    df = pd.DataFrame({'ID': ids, 'NAME': names,'Password':password} )
     df.set_index("ID", inplace=True)
     df.to_csv("StudentDetails.csv")
     # Upload User Data here

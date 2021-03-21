@@ -11,7 +11,7 @@ from Export_Data_from_firebase import get_data
 
 notif=""
 #Taking input...
-def registration(id,name):
+def registration(id,name,password):
     
     global notif
     if(name == ""):
@@ -103,7 +103,7 @@ def registration(id,name):
             Image_Path1=f"Images/{id} {name}1.jpg"
             Image=get_url(Image_Path1)
             Time=[(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))]
-            tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Image':Image,'Date':str(date.today().strftime("%m/%d/%y"))}
+            tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Image':Image,'Date':str(date.today().strftime("%m/%d/%y")),'Password':password}
             #print(tmp)
             Upload(tmp,'User_Data')
             notif=f"[Id= {id} , Name= {name}] registered."
@@ -112,4 +112,4 @@ def registration(id,name):
             notif="Please Retry"
             f = False
     if(f):           
-        reg_data.do(id)
+        reg_data.do(id,password)

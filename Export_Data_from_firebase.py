@@ -16,10 +16,12 @@ def get_data(User_ID,DocumentID):
     Time=[]
     Date=0
     image=""
+    password=""
     for doc in docs:
         temp=doc.to_dict()
         if(User_ID==temp['User_ID']):
             Time=(temp['Time'])  
             Date=temp['Date']
-            image=temp['Image'] 
-            return Time,Date,image    
+            image=temp['Image']
+            password=temp['Password'] 
+            return Time,Date,image,password    
