@@ -4,7 +4,7 @@ import numpy as np
 import pickle
 import time
 import os
-from datetime import datetime
+from datetime import datetime,date
 from Upload_to_storage import get_url
 from Upload_to_firestore import Upload
 from Export_Data_from_firebase import get_data
@@ -98,4 +98,11 @@ def attend():
         tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Date':Date,'Image':image,'Password':password}
         #print(tmp)
         Upload(tmp,'User_Data')
+        remove=0
+        for i in range(len(Time)):
+            dates=Time[i].split(" ")[0]
+            if(dates!=(datetime.now().strftime("%d/%m/%Y %H:%M:%S")).split(" ")[0]):
+                remove=i;
+        del Time[0:remove+1]           
+        tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Date':Date,'Image':image,'Password':password}        
         Upload(tmp,'DateTime')

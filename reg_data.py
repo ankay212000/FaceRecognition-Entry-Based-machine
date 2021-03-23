@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np 
 import pickle
 import os
+
 def do(id,password):
     #Getting data in random order
     fileobj = open("./data.dat", 'rb')
