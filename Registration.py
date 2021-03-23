@@ -73,6 +73,7 @@ def registration(id,name,password):
             Time=[(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))]
             tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Image':Image,'Date':str(date.today().strftime("%m/%d/%y")),'Password':password}
             Upload(tmp,'User_Data')
+            Upload(tmp,'DateTime')
             notif=f"[Id= {id} , Name= {name}] registered."
             fileobj1.close()
         except:
@@ -109,6 +110,7 @@ def registration(id,name,password):
             tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Image':Image,'Date':str(date.today().strftime("%m/%d/%y")),'Password':password}
             #print(tmp)
             Upload(tmp,'User_Data')
+            Upload(tmp,'DateTime')
             notif=f"[Id= {id} , Name= {name}] registered."
             fileobj.close()
         except:

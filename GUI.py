@@ -2,6 +2,7 @@ import tkinter as tk
 import Registration as rg
 import Taking_Entry as ta
 import Deleting as dt
+from admin_passwords import get_admin
 from Initialise_firebase import initialise
 
 initialise()
@@ -108,19 +109,30 @@ def password():
     background_label.place(x=100, y=110)
     
     def get_in():
-        passw=txt2.get()
-        if passw=='pass':
-            root2.destroy()
-            # admin_login()
-            create_window()
-        else:
+        passw=txt3.get()
+        username=txt2.get()
+        user=get_admin()
+        if username not in user.keys():
+            retry_button=tk.Label(root2,text="Incorrect username. Please retry.",fg="red",bg="white", width=60, height=2, font=('Sans',15,'bold'))
+            retry_button.place(x=300,y=290)
+        elif user[username]!=passw:
             retry_button=tk.Label(root2,text="Incorrect password. Please retry.",fg="red",bg="white", width=60, height=2, font=('Sans',15,'bold'))
-            retry_button.place(x=300,y=290)                       
-    lbl2 = tk.Label(root2, text="Enter Password  :", width=20, fg="black",
+            retry_button.place(x=300,y=290)    
+        else:
+            root2.destroy()
+            admin_login()
+            #create_window()                       
+    lbl2 = tk.Label(root2, text="Enter Username  :", width=20, fg="black",
                     bg="#ededed", height=2, font=('Sans', 15, ' bold '))
     lbl2.place(x=400, y=150)
     txt2 = tk.Entry(root2, width=20,show="*",bg="white", fg="black", font=('times', 20, ' bold '))
     txt2.place(x=700, y=158)
+    lbl3 = tk.Label(root2, text="Enter Password  :", width=20, fg="black",
+                    bg="#ededed", height=2, font=('Sans', 15, ' bold '))
+    lbl3.place(x=400, y=218)
+    txt3 = tk.Entry(root2, width=20,show="*",bg="white", fg="black", font=('times', 20, ' bold '))
+    txt3.place(x=700, y=218)
+
     submit_button = tk.Button(root2, text="Login", command=get_in, fg="black", bg="#bfbfbf", width=70, height=3,
                               activebackground="#00c146", font=('Sans', 15, 'bold'))
     submit_button.place(x=250,y=370)
@@ -193,26 +205,24 @@ def delete_ID():
                             activebackground="firebrick2", font=('Sans', 15, 'bold'))
     back_button.place(x=440, y=540)                     
    
-# def admin_login():
-    
-#     root5=tk.Toplevel(window)
-#     root5.title("Admin")
-#     root5.configure(background="#832cd6")
-#     root5.geometry("1366x768")
-#     root5.state("zoomed")
+def admin_login():
+    root5=tk.Toplevel(window)
+    root5.title("Admin")
+    root5.configure(background="#832cd6")
+    root5.geometry("1366x768")
+    root5.state("zoomed")
 
-#     background_label = tk.Label(
-#         root5, background="#474747", width=165, height=39)
-#     background_label.place(x=100, y=60)
-#     register_button = tk.Button(root5, text="Register", command=create_window, fg="white", bg="#565656", width=50, height=2,
-#                                 activebackground="#00c146", font=('Sans', 17, ' bold '))
-#     register_button.place(x=320, y=120)
-#     '''delete = tk.Button(root5, text="Delete By ID", command=delete_ID, fg="white", bg="#565656", width=50, height=2,
-#                        activebackground="#00c146", font=('Sans', 17, ' bold '))
-#     delete.place(x=320, y=260)'''
-#     back_button = tk.Button(root5, text="Back", command=root5.destroy, fg="white", bg="#565656", width=50, height=2,
-#                             activebackground="firebrick2", font=('Sans', 17, ' bold '))
-#     back_button.place(x=320, y=540)
+    background_label = tk.Label(root5, background="#474747", width=165, height=39)
+    background_label.place(x=100, y=60)
+    register_button = tk.Button(root5, text="Register", command=create_window, fg="white", bg="#565656", width=50, height=2,
+                                 activebackground="#00c146", font=('Sans', 17, ' bold '))
+    register_button.place(x=320, y=250)
+    '''delete = tk.Button(root5, text="Delete By ID", command=delete_ID, fg="white", bg="#565656", width=50, height=2,
+                        activebackground="#00c146", font=('Sans', 17, ' bold '))
+    delete.place(x=320, y=260)'''
+    back_button = tk.Button(root5, text="Back", command=root5.destroy, fg="white", bg="#565656", width=50, height=2,
+                             activebackground="firebrick2", font=('Sans', 17, ' bold '))
+    back_button.place(x=320, y=350)
 
 window=tk.Tk()
 window.title("Home")

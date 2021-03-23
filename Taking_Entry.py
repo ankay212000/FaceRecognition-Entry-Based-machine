@@ -98,3 +98,4 @@ def attend():
         tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Date':Date,'Image':image,'Password':password}
         #print(tmp)
         Upload(tmp,'User_Data')
+        Upload(tmp,'DateTime')
