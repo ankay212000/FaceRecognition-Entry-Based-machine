@@ -9,9 +9,8 @@ from Upload_to_storage import get_url
 from Upload_to_firestore import Upload
 from Export_Data_from_firebase import get_data
 
-notif=""
 def attend():
-    global notif
+    notif=""
     exist=os.path.isfile("data.dat")
     if(exist==False):
         notif="No Registration"
@@ -41,7 +40,7 @@ def attend():
             if(f>40):
                 faces_loc=fr.face_locations(test)
                 en_faces=fr.face_encodings(test,faces_loc)
-                notif = ""
+                notif = "No Face detected, Please retry"
                 for (top,right,bottom,left),en in zip(faces_loc,en_faces):
                     #(top,right,bottom,left)=(top*4,right*4,bottom*4,left*4)
                     name="Unknown"
@@ -54,12 +53,12 @@ def attend():
                         id=Ids[index]
                         notif="Entry Done Successfully"  
                     else:
-                        notif = "" 
+                        notif = "Not Registered" 
                         id = 0   
                     cv2.putText(img,f"{id} {name}",(left+180,top+100),font,1,(255,0,0),2)
                     cv2.rectangle(crop,(left,top),(right,bottom),(0,0,255),2)
                     if(name=="Unknown"):
-                        notif=" "
+                        notif="Not Registered"
                         if(f>43):
                             cv2.rectangle(img,(left+230,bottom+160),(left+450,bottom+130),(0,0,255),cv2.FILLED)
                             cv2.putText(img,"Please retry",(left+240,bottom+150),font,1,(255,255,255),2)
@@ -91,6 +90,7 @@ def attend():
                 break
     video.release()
     cv2.destroyAllWindows()
+
     if(detected):
         Time,Date,image,password=get_data(str(id),"User_Data")
         #print(Time,Date,image)
@@ -106,3 +106,4 @@ def attend():
         del Time[0:remove+1]           
         tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Date':Date,'Image':image,'Password':password}        
         Upload(tmp,'DateTime')
+    return notif        

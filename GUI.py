@@ -85,8 +85,8 @@ def create_window2():
                        height=1, font=('Sans', 30, 'bold'))
     message.place(x=150, y=30)
     def call():
-        ta.attend()
-        message = tk.Label(root1, text=ta.notif, bg="#ededed", fg="blue", width=30, height=2, activebackground="blue",
+        notif=ta.attend()
+        message = tk.Label(root1, text=notif, bg="#ededed", fg="blue", width=30, height=2, activebackground="blue",
                    font=('times', 15, ' bold '))
         message.place(x=470,y=150)           
     trackImg = tk.Button(root1, text="Take Entry", command=call, fg="white", bg="#3f4884", width=50, height=2,
