@@ -16,15 +16,15 @@ def registration(id,name,password):
     global notif
     if(name == ""):
         notif = "Name is required."
-        return
+        return notif
     if(id.isdigit()):
         id=int(id)
     elif(password==""):
         notif = "Password is required."
-        return    
+        return notif    
     else:
         notif="Invalid ID Please Retry"
-        return    
+        return notif
 #Checking if file already exists...
     exists = path.isfile('./data.dat')
     f=  True
@@ -37,7 +37,7 @@ def registration(id,name,password):
         if(id in r_ids):
             lst=r_ids.tolist()
             notif=f"Id= {id} already registered,\nWith Name = {r_names[lst.index(id)]}."    
-            return
+            return notif
 
         name=name[0].upper() + name[1:].lower()
 
@@ -118,3 +118,4 @@ def registration(id,name,password):
             f = False
     if(f):           
         reg_data.do(id,password)
+    return notif    

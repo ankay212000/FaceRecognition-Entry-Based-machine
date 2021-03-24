@@ -11,6 +11,6 @@ def check_delete_dir(path):
 
 check_delete("./data.dat")
 check_delete("./StudentDetails.csv")
-
+check_delete("./passdata.dat")
 check_delete_dir("./Images")
 check_delete_dir("./__pycache__")

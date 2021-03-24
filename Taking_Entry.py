@@ -14,7 +14,7 @@ def attend():
     exist=os.path.isfile("data.dat")
     if(exist==False):
         notif="No Registration"
-        return
+        return notif
     else:    
         font=cv2.FONT_HERSHEY_SIMPLEX
 
@@ -99,11 +99,12 @@ def attend():
         #print(tmp)
         Upload(tmp,'User_Data')
         remove=0
-        for i in range(len(Time)):
-            dates=Time[i].split(" ")[0]
-            if(dates!=(datetime.now().strftime("%d/%m/%Y %H:%M:%S")).split(" ")[0]):
-                remove=i;
-        del Time[0:remove+1]           
+        if(Time[0].split(" ")[0]!=(datetime.now().strftime("%d/%m/%Y %H:%M:%S")).split(" ")[0]):
+            for i in range(len(Time)):
+                dates=Time[i].split(" ")[0]
+                if(dates!=(datetime.now().strftime("%d/%m/%Y %H:%M:%S")).split(" ")[0]):
+                    remove=i;
+            del Time[0:remove+1]           
         tmp={'User_ID':str(id),'Time':Time,'Name':str(name),'Date':Date,'Image':image,'Password':password}        
         Upload(tmp,'DateTime')
     return notif        

@@ -57,10 +57,10 @@ def create_window():
         id=txt.get()
         name=txt2.get()
         pss=txt4.get()
-        rg.registration(id,name,pss)
-        message = tk.Label(root, text=rg.notif, bg="#ededed", fg="blue", width=30, height=2, activebackground="blue",
+        msg=rg.registration(id,name,pss)
+        message = tk.Label(root, text=msg, bg="#ededed", fg="blue", width=40, height=2, activebackground="blue",
                    font=('times', 15, ' bold '))
-        if(("already" in rg.notif) or "Please" in rg.notif):
+        if(("already" in msg) or "Please" in msg):
             message.configure(fg="firebrick2")
         message.place(x=600, y=350)
         
