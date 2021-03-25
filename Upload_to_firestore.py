@@ -12,7 +12,8 @@ def Upload(tmp,DocumentID):
     db = firestore.client()
     doc_ref = db.collection(DocumentID)
     if(DocumentID=="DateTime"):
-        doc_ref.document(str(date.today()))
+        p={'id':0}
+        doc_ref.document(str(date.today())).set(p)
         doc_ref=db.collection(u"DateTime").document(str(date.today())).collection("Authorised")
         doc_ref.document(tmp['User_ID']).set(tmp)
         #list(map(lambda x: doc_ref.document(x['User_ID']).set(x), tmp))
