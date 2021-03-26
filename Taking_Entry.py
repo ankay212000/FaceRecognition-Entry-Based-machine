@@ -75,11 +75,11 @@ def attend():
 
                     f=f+1
             cv2.imshow("Capture",img)
-            if(f>42 and name!="Unknown"):
+            if(f>45 and name!="Unknown"):
                 time.sleep(0.3)
                 break
                 
-            if(f>48 and name=="Unknown"):
+            if(f>50 and name=="Unknown"):
                 time.sleep(0.3)
                 break
             f=f+1
