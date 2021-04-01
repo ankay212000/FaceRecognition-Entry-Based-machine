@@ -30,7 +30,7 @@ pandas
 The major program files being used are:
 ```
     1.Registation.py
-    2.Taking Attendance.py
+    2.Taking Entry.py
 ```
 
 #### 1.Registeration.py
