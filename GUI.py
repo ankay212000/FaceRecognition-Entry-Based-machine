@@ -125,7 +125,7 @@ def password():
     lbl2 = tk.Label(root2, text="Enter Username  :", width=20, fg="black",
                     bg="#ededed", height=2, font=('Sans', 15, ' bold '))
     lbl2.place(x=400, y=150)
-    txt2 = tk.Entry(root2, width=20,show="*",bg="white", fg="black", font=('times', 20, ' bold '))
+    txt2 = tk.Entry(root2, width=20,bg="white", fg="black", font=('times', 20, ' bold '))
     txt2.place(x=700, y=158)
     lbl3 = tk.Label(root2, text="Enter Password  :", width=20, fg="black",
                     bg="#ededed", height=2, font=('Sans', 15, ' bold '))
